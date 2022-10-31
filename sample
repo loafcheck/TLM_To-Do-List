@@ -1,0 +1,62 @@
+class Todo {
+        constructor (item, status) {
+          this.item = item;
+          this.status = status;
+        }
+        changeState() {
+          if (this.status === true) {
+            this.status = false;
+          } else if (this.status === false) {
+            this.status = true;
+          }
+        }
+        // 2. Todo 클래스는 상태를 변경하는 changeState 메서드를 가집니다.
+      }
+
+
+      // 3. 할일의 목록을 관리하는 관리자를 추상화한 TodoManager 클래스 (할일 목록을 프로퍼티로 가집니다.)
+      class TodoManager {
+        constructor (){
+          this.todoList = [];
+        }
+        // 할 일을 저장하고(addItem),
+        addItem(item) {
+          let 새로운할일 = new Todo(item, false); // Todo클래스의 형태대로  할일을 만들어내는거 - item, false 형태의 글을 쓰는 행위
+          this.todoList.push(새로운할일); // 수진이도 민정이도 은혜도 각각의 할일목록을 가지고 있는거 - 각자의 todolist스케치북이 있다.
+        }
+        
+        // 할 일의 목록을 보여주며(getItems)
+        getItems() {
+          return this.todoList;
+        }
+
+        // 할 일의 남은 갯수를 반환하는(getLeftTodoCount)
+        getLeftTodoCount() {
+
+          // status false 숫자를 세서 반환하기
+          let count = 0;
+          for (let i = 0 ; i < this.todoList.length ; i++) {
+            if(this.todoList[i].status === false) {
+              count++;
+            }
+          }
+          return count;
+        }
+      }
+        
+      
+
+      
+     
+      const Rachel = new TodoManager();
+      const Grace = new TodoManager();
+
+      Rachel.addItem('eat')
+      Rachel.addItem('sleep')
+
+      //let Rachel = new TodoManager();
+      //Rachel.addItem('swim')
+      //Rachel.addItem('eat')
+      //console.log(Rachel.getItems())
+      //Rachel.getItems()[1].changestate();
+      
